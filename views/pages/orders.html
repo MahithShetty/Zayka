@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        input[type=text], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            }
+        #plus,#minus{
+            background-color: white;
+            border:none;
+            margin-top: -5%;
+        }
+        table{
+            width: 50%;
+            margin-left: 10%;
+            margin-top:10%;
+        }
+        #notlogged{
+            margin-left: 40%;
+        }
+        #card_view{
+            margin-top:20%;margin-left: 10%;  overflow: scroll;  width: 50%;height: 50%;
+        }
+        @media only screen and (max-width: 1024px){
+            #notlogged{
+            margin-left: 35%;
+        }
+        }
+        @media only screen and (max-width: 600px){
+            table{
+                width:100%;
+            }
+            #card_view{
+            margin-top:40%;margin-right: 10%;  overflow: scroll;  width: 100%;height: 50%;
+        }
+        #notlogged{
+            margin-left: 15%;
+        }
+        }
+        @media screen and (max-width: 400px) { 
+            #headImg{
+            display: none;
+            }
+            #nav-menu-1{
+                font-size: 8px;
+            }
+            #notlogged{
+            margin-left: 10%;
+        }
+
+            }
+        		
+        input[type=text], input[type=password],input[type=number] { 
+            width: 100%; 
+            padding: 12px 20px; 
+            margin: 8px 0; 
+            display: inline-block; 
+            box-sizing: border-box; 
+        } 
+        
+        
+        .cancelbtn { 
+            width: auto; 
+            padding: 10px 18px; 
+            background-color: #f44336; 
+            border: transparent;
+        } 
+        
+        
+        .imgcontainer { 
+            text-align: center; 
+            margin: 24px 0 12px 0; 
+            position: relative; 
+        } 
+        
+        img.avatar { 
+            width: 40%; 
+            border-radius: 50%; 
+        } 
+        
+        .container { 
+            padding: 16px; 
+        } 
+        
+        span.psw { 
+            float: right; 
+            padding-top: 16px; 
+        } 
+        
+        
+        .modal { 
+            display: none;  
+            position: fixed; 
+            z-index: 1;  
+            left: 0; 
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            overflow: auto;  
+            background-color: rgba(44, 44, 44,0.5); 
+            padding-top: 60px; 
+            z-index: 99999;
+        } 
+        
+        
+        .modal-content { 
+            background-color: rgb(10, 10, 10);
+            margin: 5% auto 15% auto;   
+            width: 80%;  
+        } 
+        
+        .close { 
+            position: absolute; 
+            right: 25px; 
+            top: 0; 
+            color: #fed136; 
+            font-size: 35px; 
+            font-weight: bold; 
+        } 
+        
+        .close:hover, 
+        .close:focus { 
+            color: red; 
+            cursor: pointer; 
+        } 
+        
+        .animate { 
+            -webkit-animation: animatezoom 0.6s; 
+            animation: animatezoom 0.6s 
+        } 
+        
+        @-webkit-keyframes animatezoom { 
+            from {-webkit-transform: scale(0)}  
+            to {-webkit-transform: scale(1)} 
+        } 
+            @keyframes animatezoom { 
+            from {transform: scale(0)}  
+            to {transform: scale(1)} 
+        } 
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+
+    <!-- Site Title -->
+    <title>Zayka</title>
+    <link rel = "icon" href =  "../img/favicon-1.ico" type = "image/x-icon"> 
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+        <!--
+        CSS
+        ============================================= -->
+        <link rel="stylesheet" href="../css/linearicons.css">
+        <link rel="stylesheet" href="../css/font-awesome.min.css">
+        <link rel="stylesheet" href="../css/bootstrap.css">
+        <link rel="stylesheet" href="../css/magnific-popup.css">
+        <link rel="stylesheet" href="../css/jquery-ui.css">				
+        <link rel="stylesheet" href="../css/nice-select.css">							
+        <link rel="stylesheet" href="../css/animate.min.css">
+        <link rel="stylesheet" href="../css/owl.carousel.css">				
+        <link rel="stylesheet" href="../css/main.css">
+    </head>
+    <body>	
+        <header id="header">
+            <div class="header-top">
+                <div class="container">
+                      <div class="row justify-content-center">
+                          <div id="logo">
+                            <a href="index.html"><img src="../img/logo.png" alt="" title="" /></a>
+                          </div>
+                      </div>			  					
+                </div>
+            </div>
+            <div class="container main-menu">
+                <div class="row align-items-center justify-content-center d-flex">			
+                  <nav >
+                    <ul class="nav-menu" id="nav-menu-1">
+                      <li><a href="../index.html">Home</a></li>
+                      <li><a href="./menu.html">Menu</a></li>
+                      <li><a href="#" style="display: none" id="myOrders">My Orders</a></li>	
+                      <li><a href="./cart.html" style="display: none" id="cart">Cart</a></li>
+					  <li><a href="./admin.html" style="display: none" id="admin">Admin</a></li>
+                      <!-- <li><a href="#footer">Contact</a></li> -->
+					  <li><a href="" id="logout" onclick="logout()"  style="display: none">logout</a></li>
+                      
+                      <li><a onclick="document.getElementById('login-form').style.display='block'" id="login">Login</a></li>
+                      <li><a onclick="document.getElementById('signup-form').style.display='block'" id="signup">Signup</a></li>
+                      
+                                
+                    </ul>
+                  </nav><!-- #nav-menu-container -->					      		  
+                </div>
+            </div>
+        </header><!-- #header -->
+            
+        
+        
+			<!-- start banner Area -->
+			<section class="banner-area">		
+                    <div class="container">
+                        <div class="row fullscreen align-items-center justify-content-between" id="customer">
+                            <div  id="card_view" >
+                                
+                            </div>
+                        </div>
+
+                    </div>					
+                </section>
+
+
+        <!-- start footer Area -->		
+        <footer class="footer-area" id='footer'>
+                <div class="footer-widget-wrap">
+                    <div class="container">
+                        <div class="row section-gap">
+                            <div class="col-lg-6  col-md-6 col-sm-6" style="padding-left: 2.5%;">
+                                <div class="single-footer-widget">
+                                    <h4>Opening Hours</h4>
+                                    <ul class="hr-list">
+                                        <li class="d-flex justify-content-between">
+                                            <span>Monday - Friday</span> <span>08.00 am - 10.00 pm</span>
+                                        </li>
+                                        <li class="d-flex justify-content-between">
+                                            <span>Saturday</span> <span>08.00 am - 10.00 pm</span>
+                                        </li>
+                                        <li class="d-flex justify-content-between">
+                                            <span>Sunday</span> <span>08.00 am - 10.00 pm</span>
+                                        </li>																				
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-6  col-md-6 col-sm-8" style="padding-left: 5%;">
+                                <div class="single-footer-widget">
+                                    <h4>Contact Us</h4>
+                                    <p>
+                                            JUNAGADH JETPUR HWY NO 8 JETPUR,<br> Jetalsar,<br> Gujarat 360360
+                                    </p>
+                                    <p class="number">
+                                        +91-99999-97460 <br>
+                                        +91-99999-56900
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+            <div class="footer-bottom-wrap">
+                <div class="container">
+                    <div class="row footer-bottom d-flex" style="align-content:center;">
+                        &nbsp; Copyright &copy;Zayka
+                    </div>						
+                </div>
+            </div>
+        </footer>
+        <!-- End footer Area -->	
+        <div id="login-form" class="modal"> 
+				<form class="modal-content animate" >     
+				  <div class="container" style="color: white;"> 
+					<center><label style="font-size:150%;color:#fed136;"><b>LOGIN FORM</b></label></center>
+					<label ><b>Phone Number</b></label> 
+					<input style=" background-color: transparent;border: transparent;border-bottom: 1px solid black;color: black; " type="number" placeholder="Enter Phone Number" name="userNameL" id ="userNameL" required> 
+				  
+					<label ><b>Password</b></label>     
+				   <input style=" background-color: transparent;border: transparent;border-bottom: 1px solid black;color: black; " type="password" placeholder="Enter Password" name="passwordL" id="passwordL"  required> 
+						
+					<button type="button" style="background-color: green;border: transparent;" onclick="loginFunc()" >Login</button> 
+				  </div> 
+				  <div class="container">
+					  <label id="Lerror" style="color: #f44336;display: none;"></label>
+				  </div>
+				<div class="container"> 
+					<button type="button" onclick="document.getElementById('login-form').style.display='none'" class="cancelbtn">Cancel</button> 
+					<!-- <span class="psw" style="color:white;">Forgot <a href="#">password?</a></span>  -->
+				  </div> 
+				</form> 
+			  </div> 
+				
+			  <div id="signup-form" class="modal" > 
+				<form class="modal-content animate" >     
+				  <div class="container" style="color: white;"> 
+					<center><label style="font-size:150%;color:#fed136;"><b>SIGNUP FORM</b></label></center>
+					<label ><b>Phone Number</b></label> 
+					<input style=" background-color: transparent;border: transparent;border-bottom: 1px solid black;color: black; " type="number" placeholder="Enter Phone Number" name="userName" id ="userName" required> 
+				  
+					<!-- <label ><b>Email Id</b></label> 
+					<input style=" background-color: transparent;border: transparent;border-bottom: 1px solid white;color: white; " type="text" placeholder="Enter Email Id" name="emailID" id="emailID"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required> 
+			 -->
+					<label ><b>Password</b></label>     
+					<input style=" background-color: transparent;border: transparent;border-bottom: 1px solid black; color: black;" type="password" placeholder="Enter Password" name="password" id="password" required> 
+					 
+					<label ><b>Re-Enter Password</b></label>     
+				   <input style=" background-color: transparent;border: transparent;border-bottom: 1px solid black;color: black; " type="password" placeholder="Re-Enter Password" name="rpwd" id="rpwd" required> 
+						
+					<button type="button" style="background-color: green;border: transparent;" onclick="signupFunc()">SignUp</button> 
+					<!-- <input type="checkbox"> Keep me signed in  -->
+				  </div> 
+				  <div class="container">
+					  <label id="Serror" style="color: #f44336;display: none;"></label>
+				  </div>
+				  <div class="container"> 
+					<button type="button" onclick="document.getElementById('signup-form').style.display='none'" class="cancelbtn">Cancel</button> 
+				  </div> 
+				</form> 
+			  </div> 
+        <script src="../js/vendor/jquery-2.2.4.min.js"></script>
+        <script src="../js/vendor/bootstrap.min.js"></script>			
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>		
+        <script src="../js/superfish.min.js"></script>	
+        <script src="../js/jquery.magnific-popup.min.js"></script>						
+        <script src="../js/jquery.nice-select.min.js"></script>					
+        <script src="../js/owl.carousel.min.js"></script>			
+        <script src="../js/isotope.pkgd.min.js"></script>								
+        <script src="../js/main.js"></script>	
+
+        <script>            
+        myStorage = window.localStorage;
+            function renderCards(myObj) {
+                var html = '<center><h1 style="color: white;background-color:black;">MY ORDERS</h1></center>';
+                //console.log(myObj.Document.length);
+                var j =0;
+                var c=0;
+                // html+='';
+                for(var i=0;i<myObj.Document.length;i++){
+                   // console.log(myObj.Document[i].orderID);
+                        if(c==0){
+                        var sum=0;
+                       // console.log(html);
+                        html += '<div class="card w-100" style="margin-bottom:2%"><div class="card-body"><h5 class="card-title">Order ID'+myObj.Document[i].orderID+'</h5><hr><p class="card-text">';
+                        for(var j=i;j<myObj.Document.length;j++)
+                            if(myObj.Document[i].orderID==myObj.Document[j].orderID)
+                                    c++;
+                        }
+                        if(c==1){
+                            c--;
+                            sum+= myObj.Document[i].cost;
+                            html+='<p>'+myObj.Document[i].itemName+'&nbspx&nbsp'+myObj.Document[i].qty+'&nbsp=&nbsp'+myObj.Document[i].cost+'</p><p style=" font-weight: bold;">Cost='+sum+'</p></p>';
+                            if(myObj.Document[i].status==1){
+                                html+= '<hr><p style="color:black">Waiting for the restaurant to accept the order!</p></div></div>';
+                            }
+                            else if(myObj.Document[i].status==2){
+                                html+= '<hr><p style="color:green">Your order will be delivered within 45mins!</p></div></div>';
+                            }
+                            else if(myObj.Document[i].status==3){
+                                html+= '<hr><p style="color:red">Your order has been rejected, please order again. Sorry for the inconvenince!</p></div></div>';
+                            }
+                        }
+                        else{
+                            c--;
+                            html+='<p>'+myObj.Document[i].itemName+'&nbspx&nbsp'+myObj.Document[i].qty+'&nbsp=&nbsp'+myObj.Document[i].cost+'</p>';
+                            sum+= myObj.Document[i].cost;
+                        }
+                    
+                }
+                document.getElementById('card_view').innerHTML=html;
+            }
+
+
+               //which image should be displayed
+            window.onload=function getCardData(){
+
+                var token = localStorage.getItem("User");
+                //   var decoded = jwt_decode(token);
+                var role =localStorage.getItem("Role");
+                //console.log(token);
+                if(token!=null)
+                {
+                    //console.log(role);
+                    if(role>0)
+                        document.getElementById('admin').style.display='block'; 
+                    document.getElementById('logout').style.display='block'; 
+                    document.getElementById('login').style.display='none';
+                    document.getElementById('signup').style.display='none';
+                    document.getElementById('logout').style.display='block'; 
+                    document.getElementById('myOrders').style.display='block'; 
+                    document.getElementById('cart').style.display='block'; 
+                    var time_now=(new Date()).getTime();
+                    var time_then=localStorage.getItem('lastclear');
+                    // console.log(time_then+"  "+time_now);
+                    if ((time_now - time_then) > 1000 * 60 * 60 * 24) {
+                        logout();
+                        }
+                }
+                    var xhttp = new XMLHttpRequest();
+                // console.log("im here");
+                 var params = 'customerID='+localStorage.getItem("User");
+                 if(role == null){
+                               
+                               document.getElementById('customer').innerHTML=' <center id="notlogged"><a  class="primary-btn text-uppercase" href="../index.html"  >Go Back to Home Page</a></center>';
+                         }
+                else{
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                    //console.log(this.responseText);
+                    var myObj = JSON.parse(this.responseText);
+                    if(myObj.Code == 0){
+                       // console.log("yay!");
+                        var html='<div class="card w-100"><div class="card-body"><h5 class="card-title">No orders yet!</h5></div></div>';
+                        document.getElementById('card_view').innerHTML=html;
+                       // console.log(html);
+                        }
+                    else
+                    renderCards(myObj);
+                    }
+                   
+                };
+                xhttp.open("GET", "http://localhost:3000/customerOrder/get?"+params, true);
+                // xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhttp.send();
+                }
+                
+                
+                
+            }
+
+
+            function logout(){
+                localStorage.clear();
+                window.open="../index.html";
+                window.location.reload();
+      document.getElementById('admin').style.display='none'; 
+      document.getElementById('logout').style.display='none'; 
+                    document.getElementById('login').style.display='block';
+                    document.getElementById('signup').style.display='block';
+                    document.getElementById('admin').style.display='none'; 	  
+                    document.getElementById('myOrders').style.display='none'; 
+                        document.getElementById('cart').style.display='none'; 	  
+
+
+            }
+ 
+     //sign up
+     function signupFunc() {
+        uName=document.getElementById("userName").value;
+        // email=document.getElementById("emailID").value;
+        pwd=document.getElementById("password").value;
+        rpwd=document.getElementById("rpwd").value;
+        if(uName == ""||pwd == "" ||rpwd == ""|| uName.length!=10 ){
+          document.getElementById('Serror').innerHTML=" Fill in all the details correctly!";
+          document.getElementById('Serror').style.display='block';
+        }
+        else if(pwd!=rpwd){
+          document.getElementById('Serror').innerHTML="Password doesnt match!";
+          document.getElementById('Serror').style.display='block';
+        }
+        else{
+          var xhttp = new XMLHttpRequest();
+          var params = 'phoneNo='+document.getElementById("userName").value+'&password='+document.getElementById("password").value;
+          // console.log(params);
+          xhttp.onreadystatechange = function() {
+            // console.log(this.responseText);
+            if (this.readyState == 4 && this.status == 200) {
+              var myObj = JSON.parse(this.responseText);
+              // console.log(myObj.Message);
+              // console.log(myObj.Code);
+              if(myObj.Code==1){
+                document.getElementById('signup-form').style.display='none';
+                document.getElementById('Serror').style.display='none';
+                document.getElementById('Serror').innerHTML= "";
+                window.location.reload();
+              }
+              else{
+                document.getElementById('Serror').innerHTML= myObj.Message;
+                document.getElementById('Serror').style.display='block';
+
+              }            
+            }
+          };
+          xhttp.open("POST", "http://localhost:3000/customer/add", true);
+          xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+          xhttp.send(params);
+        }
+    }
+    //login 
+    function loginFunc() {
+        uName=document.getElementById("userNameL").value;
+        pwd=document.getElementById("passwordL").value;
+        if(uName == "" ||pwd == ""|| uName.length!=10  ){
+           document.getElementById('Lerror').innerHTML=" Fill in all the details correctly!";
+           document.getElementById('Lerror').style.display='block';
+        }
+        else{
+          var xhttp = new XMLHttpRequest();
+          var params = 'phoneNo='+document.getElementById("userNameL").value+'&password='+document.getElementById("passwordL").value;
+          // console.log(params);
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              // console.log(this.responseText);
+              var myObj = JSON.parse(this.responseText);
+              // console.log(myObj.Document);
+              if(myObj.Document[0].customerID!=null){
+				//   console.log(myObj.Document);
+                localStorage.setItem('authorization', "Bearer "+ myObj.Document[1]);
+				localStorage.setItem('User', myObj.Document[0].customerID);
+                localStorage.setItem('Role', myObj.Document[0].role);				
+                localStorage.setItem('lastclear',(new Date()).getTime());
+                document.getElementById('login-form').style.display='none';
+                document.getElementById('login').style.display='none';
+                document.getElementById('signup').style.display='none';
+                document.getElementById('logout').style.display='block';
+                document.getElementById('Lerror').innerHTML="";
+                document.getElementById('Lerror').style.display='none';
+                window.location.reload();
+              }
+              else{
+                document.getElementById('Lerror').innerHTML="Username or Password is wrong!";
+                document.getElementById('Lerror').style.display='block';
+              }
+
+            }
+          };
+          xhttp.open("GET", "http://localhost:3000/customer/login?"+params, true);
+          // xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+          xhttp.send();
+        }
+    }
+
+
+        </script>
+    </body>
+</html>

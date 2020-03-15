@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <style>
+      input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        }
+    #plus,#minus{
+        background-color: white;
+        border:none;
+        margin-top: -5%;
+    }
+    
+    input[type=text], input[type=password],input[type=number] { 
+    width: 100%; 
+    padding: 12px 20px; 
+    margin: 8px 0; 
+    display: inline-block; 
+    box-sizing: border-box; 
+    } 
+
+
+    .cancelbtn { 
+    width: auto; 
+    padding: 10px 18px; 
+    background-color: #f44336; 
+    border: transparent;
+    } 
+
+
+    .imgcontainer { 
+    text-align: center; 
+    margin: 24px 0 12px 0; 
+    position: relative; 
+    } 
+
+    img.avatar { 
+    width: 40%; 
+    border-radius: 50%; 
+    } 
+
+    .container { 
+    padding: 16px; 
+    } 
+
+    span.psw { 
+    float: right; 
+    padding-top: 16px; 
+    } 
+
+
+    .modal { 
+    display: none;  
+    position: fixed; 
+    z-index: 1;  
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    overflow: auto;  
+    background-color: rgba(44, 44, 44,0.5); 
+    padding-top: 60px; 
+    z-index: 99999;
+    } 
+
+
+    .modal-content { 
+    background-color: rgb(10, 10, 10);
+    margin: 5% auto 15% auto;   
+    width: 80%;  
+    } 
+
+    .close { 
+    position: absolute; 
+    right: 25px; 
+    top: 0; 
+    color: #fed136; 
+    font-size: 35px; 
+    font-weight: bold; 
+    } 
+
+    .close:hover, 
+    .close:focus { 
+    color: red; 
+    cursor: pointer; 
+    } 
+
+    .animate { 
+    -webkit-animation: animatezoom 0.6s; 
+    animation: animatezoom 0.6s 
+    } 
+
+    @-webkit-keyframes animatezoom { 
+    from {-webkit-transform: scale(0)}  
+    to {-webkit-transform: scale(1)} 
+    } 
+    @keyframes animatezoom { 
+    from {transform: scale(0)}  
+    to {transform: scale(1)} 
+    } 
+    @media screen and (max-width: 300px) { 
+    span.psw { 
+      display: block; 
+      float: none; 
+    } 
+    .cancelbtn { 
+      width: 100%; 
+    } 
+    } 
+
+    @media screen and (max-width: 400px) { 
+    #headImg{
+    display: none;
+    }
+    #nav-menu-1{
+        font-size: 8px;
+      }
+
+    }
+    </style>
+    <!-- Site Title -->
+    <title>Zayka</title>
+    <link rel = "icon" href =  "../img/favicon-1.ico" type = "image/x-icon"> 
+
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+        <!--
+        CSS
+        ============================================= -->
+        <link rel="stylesheet" href="../css/linearicons.css">
+        <link rel="stylesheet" href="../css/font-awesome.min.css">
+        <link rel="stylesheet" href="../css/bootstrap.css">
+        <link rel="stylesheet" href="../css/magnific-popup.css">
+        <link rel="stylesheet" href="../css/jquery-ui.css">				
+        <link rel="stylesheet" href="../css/nice-select.css">							
+        <link rel="stylesheet" href="../css/animate.min.css">
+        <link rel="stylesheet" href="../css/owl.carousel.css">				
+        <link rel="stylesheet" href="../css/main.css">
+    </head>
+    <body>	
+        <header id="header">
+            <div class="header-top">
+                <div class="container">
+                      <div class="row justify-content-center">
+                          <div id="logo">
+                            <a href="index.html"><img src="../img/logo.png" alt="" title="" /></a>
+                          </div>
+                      </div>			  					
+                </div>
+            </div>
+            <div class="container main-menu">
+                <div class="row align-items-center justify-content-center d-flex">			
+                  <nav >
+                    <ul class="nav-menu" id="nav-menu-1">
+                                <li><a href="../index.html">Home</a></li>
+                                <!-- <li><a href="#about">About</a></li>									 -->
+                                  <li><a href="./menu.html">Menu</a></li>
+                                <li><a href="./orders.html" style="display: none" id="myOrders">My Orders</a></li>	
+                                <!-- <li><a href="#gallery">Gallery</a></li>											          					          		           -->
+                                <!-- <li><a href="#location">Location</a></li> -->
+                                
+                                <li><a href="./cart.html" style="display: none" id="cart">Cart</a></li>
+									              <li><a href="#" style="display: none" id="admin">Admin</a></li>
+                                <!-- <li><a href="#footer">Contact</a></li> -->
+                                <li><a href="" id="logout" onclick="logout()" style="display: none">logout</a></li>
+
+                      <li><a onclick="document.getElementById('login-form').style.display='block'" id="login"  style="color: white">Login</a></li>
+                      <li><a onclick="document.getElementById('signup-form').style.display='block'" id="signup">Signup</a></li>
+                                
+                                
+                    </ul>
+                  </nav><!-- #nav-menu-container -->					      		  
+                </div>
+            </div>
+        </header><!-- #header -->
+        
+        <!-- start banner Area -->
+        <section class="banner-area">		
+            <div class="container">
+                <div class="row fullscreen align-items-center justify-content-between">
+                    <div class="col-lg-12 banner-content" id="adminRoles">
+                        <p>
+                            
+                        </p>
+                        <h1 class="text-white" style="margin-top: 10%;width:45%;"><center>ZAYKA</center></h1>
+                            <div>
+                                <a  class="primary-btn text-uppercase" style="margin-top: 2.5%;background: #e2b100;padding: 0%;">
+                                  <select id="modifyMenu" class="primary-btn text-uppercase" style="background: #e2b100;border:transparent;color:white;padding-top: 0%;padding-bottom: 0%;" onclick="modifyMenu()">
+                                    <option class="primary-btn text-uppercase"  style="background: #e2b100;border:transparent;color:white;" selected="selected" disabled >Modify Menu</option>
+                                    <option class="primary-btn text-uppercase"   style="background: #e2b100;border:transparent;color:white;" value="addItem"  id = "addItem">ADD ITEM</option>
+                                    <option class="primary-btn text-uppercase"  style="background: #e2b100;border:transparent;color:white;" value="deleteItem" id = "deleteItem">Delete Item</option>
+                                    <option class="primary-btn text-uppercase"  style="background: #e2b100;border:transparent;color:white;" value="editItem" id = "editItem">Update Item</option>                                
+                                  </select>
+                                </a>
+                                <a  class="primary-btn text-uppercase" onclick="document.getElementById('modify-role-form').style.display='block'"  id = "modifyRole" style="margin-top: 2.5%;background: #40911b">Modify Role</a>
+                                <a  class="primary-btn text-uppercase" href="pendingOrders.html"  id = "pendingOrders" style="margin-top: 2.5%;background: rgb(207, 1, 1)">Pending Orders</a>
+                            </div>
+
+                    </div>
+                </div>
+            </div>					
+        </section>
+        <!-- End banner Area -->
+
+     
+
+        <!-- End review Area -->					
+                
+
+        <!-- start footer Area -->		
+        <footer class="footer-area" id='footer'>
+                <div class="footer-widget-wrap">
+                    <div class="container">
+                        <div class="row section-gap">
+                            <div class="col-lg-6  col-md-6 col-sm-6" style="padding-left: 2.5%;">
+                                <div class="single-footer-widget">
+                                    <h4>Opening Hours</h4>
+                                    <ul class="hr-list">
+                                        <li class="d-flex justify-content-between">
+                                            <span>Monday - Friday</span> <span>08.00 am - 10.00 pm</span>
+                                        </li>
+                                        <li class="d-flex justify-content-between">
+                                            <span>Saturday</span> <span>08.00 am - 10.00 pm</span>
+                                        </li>
+                                        <li class="d-flex justify-content-between">
+                                            <span>Sunday</span> <span>08.00 am - 10.00 pm</span>
+                                        </li>																				
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-6  col-md-6 col-sm-8" style="padding-left: 5%;">
+                                <div class="single-footer-widget">
+                                    <h4>Contact Us</h4>
+                                    <p>
+                                        JUNAGADH JETPUR HWY NO 8 JETPUR,<br> Jetalsar,<br> Gujarat 360360
+                                    </p>
+                                    <p class="number">
+                                      +91-99999-97460 <br>
+                                      +91-99999-56900
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+            <div class="footer-bottom-wrap">
+                <div class="container">
+                    <div class="row footer-bottom d-flex" style="align-content:center;">
+                        &nbsp; Copyright &copy;Zayka
+                    </div>						
+                </div>
+            </div>
+        </footer>
+        <!-- End footer Area -->
+
+        <div id="modify-role-form" class="modal"> 
+                <form class="modal-content animate" >     
+                  <div class="container" style="color: white;"> 
+                    <center><label style="font-size:150%;color:#fed136;"><b>MODIFY ROLE</b></label></center>
+                    <label ><b>Phone Number</b></label> 
+                    <input style=" background-color: transparent;border: transparent;border-bottom: 1px solid black;color: black; " type="number" placeholder="Enter Phone Number" name="phoneNo" id ="phoneNo" required> 
+                  
+                    <select style=" background-color: transparent;border: transparent;border-bottom: 1px solid black;color: black; " id="choseRole">
+                            <option value="" selected disabled>Choose Role</option>
+                            <option value="0">Customer</option>
+                            <option value="1">Admin</option>
+                    </select>
+                    <br>
+                    <button type="button" style="background-color: green;border: transparent;" onclick="modifyRole()" >Change</button> 
+                  </div> 
+                  <div class="container">
+                      <label id="Rerror" style="color: #f44336;display: none;"></label>
+                  </div>
+                <div class="container"> 
+                    <button type="button" onclick="document.getElementById('modify-role-form').style.display='none'" class="cancelbtn">Cancel</button> 
+                    <!-- <span class="psw" style="color:white;">Forgot <a href="#">password?</a></span>  -->
+                  </div> 
+                </form> 
+              </div> 
+                
+        <div id="add-item-form" class="modal"> 
+                <form class="modal-content animate" >     
+                  <div class="container" style="color: white;"> 
+                    <center><label style="font-size:150%;color:#fed136;"><b>ADD ITEM</b></label></center>
+                    <label ><b>Item Name</b></label> 
+                    <input style=" background-color: transparent;border: transparent;border-bottom: 1px solid black;color: black; " type="text" placeholder="Enter Item Name" name="itemName" id ="itemName" required> 
+                  
+                    <label ><b>Item Description</b></label>     
+                   <input style=" background-color: transparent;border: transparent;border-bottom: 1px solid black;color: black; " type="text" placeholder="Enter Item Description" name="description" id="description"  required> 
+                        
+                   <label ><b>Cost</b></label>     
+                   <input style=" background-color: transparent;border: transparent;border-bottom: 1px solid black;color: black; " type="text" placeholder="Enter Item Cost" name="cost" id="cost"  required> 
+                    <button type="button" style="background-color: green;border: transparent;" onclick="addItem()" >Add</button> 
+                  </div> 
+                  <div class="container">
+                      <label id="Aerror" style="color: #f44336;display: none;"></label>
+                  </div>
+                <div class="container"> 
+                    <button type="button" onclick="document.getElementById('add-item-form').style.display='none'" class="cancelbtn">Cancel</button> 
+                    <!-- <span class="psw" style="color:white;">Forgot <a href="#">password?</a></span>  -->
+                  </div> 
+                </form> 
+              </div> 
+
+              <div id="delete-item-form" class="modal"> 
+                <form class="modal-content animate" >     
+                  <div class="container" style="color: white;"> 
+                    <center><label style="font-size:150%;color:#fed136;"><b>DELETE ITEM</b></label></center>
+                    <label ><b>Item Name</b></label> 
+                    <select id ="ItemSelect" required> </select>
+                    <br>
+                    <button type="button" style="background-color: green;border: transparent;" onclick="deleteItems()" >DELETE</button> 
+                  </div> 
+                  <div class="container">
+                      <label id="Derror" style="color: #f44336;display: none;"></label>
+                  </div>
+                  <div class="container"> 
+                    <button type="button" onclick="document.getElementById('delete-item-form').style.display='none'" class="cancelbtn">Cancel</button> 
+                    <!-- <span class="psw" style="color:white;">Forgot <a href="#">password?</a></span>  -->
+                  </div>
+                </form> 
+              </div> 
+                
+    
+              <div id="edit-item-form" class="modal"> 
+                  <form class="modal-content animate" >     
+                    <div class="container" style="color: white;"> 
+                      <center><label style="font-size:150%;color:#fed136;"><b>UPDATE ITEM COST</b></label></center>
+                      <label ><b>Item Name</b></label> 
+                      <select id ="ItemSelectU" required> </select>
+                      <br>
+                      <label ><b>Cost</b></label>     
+                   <input style=" background-color: transparent;border: transparent;border-bottom: 1px solid black;color: black; " type="text" placeholder="Enter Item Cost" name="costU" id="costU"  required> 
+                      <button type="button" style="background-color: green;border: transparent;" onclick="updateItems()" >UPDATE</button> 
+                    </div> 
+                    <div class="container">
+                        <label id="Eerror" style="color: #f44336;display: none;"></label>
+                    </div>
+                    <div class="container"> 
+                      <button type="button" onclick="document.getElementById('edit-item-form').style.display='none'" class="cancelbtn">Cancel</button> 
+                      <!-- <span class="psw" style="color:white;">Forgot <a href="#">password?</a></span>  -->
+                    </div>
+                  </form> 
+                </div> 
+
+        <div id="login-form" class="modal"> 
+            <form class="modal-content animate" >     
+              <div class="container" style="color: white;"> 
+                <center><label style="font-size:150%;color:#fed136;"><b>LOGIN FORM</b></label></center>
+                <label ><b>Phone Number</b></label> 
+                <input style=" background-color: transparent;border: transparent;border-bottom: 1px solid black;color: black; " type="number" placeholder="Enter Phone Number" name="userNameL" id ="userNameL" required> 
+              
+                <label ><b>Password</b></label>     
+               <input style=" background-color: transparent;border: transparent;border-bottom: 1px solid black;color: black; " type="password" placeholder="Enter Password" name="passwordL" id="passwordL"  required> 
+                    
+                <button type="button" style="background-color: green;border: transparent;" onclick="loginFunc()" >Login</button> 
+              </div> 
+              <div class="container">
+                  <label id="Lerror" style="color: #f44336;display: none;"></label>
+              </div>
+            <div class="container"> 
+                <button type="button" onclick="document.getElementById('login-form').style.display='none'" class="cancelbtn">Cancel</button> 
+                <!-- <span class="psw" style="color:white;">Forgot <a href="#">password?</a></span>  -->
+              </div> 
+            </form> 
+          </div> 
+            
+          <div id="signup-form" class="modal" > 
+            <form class="modal-content animate" >     
+              <div class="container" style="color: white;"> 
+                <center><label style="font-size:150%;color:#fed136;"><b>SIGNUP FORM</b></label></center>
+                <label ><b>Phone Number</b></label> 
+                <input style=" background-color: transparent;border: transparent;border-bottom: 1px solid black;color: black; " type="number" placeholder="Enter Phone Number" name="userName" id ="userName"  required> 
+              
+                <!-- <label ><b>Email Id</b></label> 
+                <input style=" background-color: transparent;border: transparent;border-bottom: 1px solid white;color: white; " type="text" placeholder="Enter Email Id" name="emailID" id="emailID"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required> 
+         -->
+                <label ><b>Password</b></label>     
+                <input style=" background-color: transparent;border: transparent;border-bottom: 1px solid black; color: black;" type="password" placeholder="Enter Password" name="password" id="password" required> 
+                 
+                <label ><b>Re-Enter Password</b></label>     
+               <input style=" background-color: transparent;border: transparent;border-bottom: 1px solid black;color: black; " type="password" placeholder="Re-Enter Password" name="rpwd" id="rpwd" required> 
+                    
+                <button type="button" style="background-color: green;border: transparent;" onclick="signupFunc()">SignUp</button> 
+                <!-- <input type="checkbox"> Keep me signed in  -->
+              </div> 
+              <div class="container">
+                  <label id="Serror" style="color: #f44336;display: none;"></label>
+              </div>
+              <div class="container"> 
+                <button type="button" onclick="document.getElementById('signup-form').style.display='none'" class="cancelbtn">Cancel</button> 
+              </div> 
+            </form> 
+          </div> 	
+
+        <script src="../js/vendor/jquery-2.2.4.min.js"></script>
+        <script src="../js/popper.min.js"></script>
+        <script src="../js/vendor/bootstrap.min.js"></script>			
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>		
+         <script src="../js/jquery-ui.js"></script>					
+          <script src="../js/easing.min.js"></script>			
+        <script src="../js/hoverIntent.js"></script>
+        <script src="../js/superfish.min.js"></script>	
+        <script src="../js/jquery.ajaxchimp.min.js"></script>
+        <script src="../js/jquery.magnific-popup.min.js"></script>						
+        <script src="../js/jquery.nice-select.min.js"></script>					
+        <script src="../js/owl.carousel.min.js"></script>			
+        <script src="../js/isotope.pkgd.min.js"></script>								
+        <!-- <script src="../s/mail-script.js"></script>	 -->
+        <script src="../js/main.js"></script>	
+
+        <script>
+
+
+      myStorage = window.localStorage;
+    //sign up
+function signupFunc() {
+        uName=document.getElementById("userName").value;
+        // email=document.getElementById("emailID").value;
+        pwd=document.getElementById("password").value;
+        rpwd=document.getElementById("rpwd").value;
+        if(uName == ""||pwd == "" ||rpwd == ""|| uName.length!=10 ){
+          document.getElementById('Serror').innerHTML=" Fill in all the details correctly!";
+          document.getElementById('Serror').style.display='block';
+        }
+        else if(pwd!=rpwd){
+          document.getElementById('Serror').innerHTML="Password doesnt match!";
+          document.getElementById('Serror').style.display='block';
+        }
+        else{
+          var xhttp = new XMLHttpRequest();
+          var params = 'phoneNo='+document.getElementById("userName").value+'&password='+document.getElementById("password").value;
+          // console.log(params);
+          xhttp.onreadystatechange = function() {
+            // console.log(this.responseText);
+            if (this.readyState == 4 && this.status == 200) {
+              var myObj = JSON.parse(this.responseText);
+              // console.log(myObj.Message);
+              // console.log(myObj.Code);
+              if(myObj.Code==1){
+                document.getElementById('signup-form').style.display='none';
+                document.getElementById('Serror').style.display='none';
+                document.getElementById('Serror').innerHTML= "";
+                window.location.reload();
+              }
+              else{
+                document.getElementById('Serror').innerHTML= myObj.Message;
+                document.getElementById('Serror').style.display='block';
+
+              }            
+            }
+          };
+          xhttp.open("POST", "http://localhost:3000/customer/add", true);
+          xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+          xhttp.send(params);
+        }
+    }
+    //login 
+function loginFunc() {
+        uName=document.getElementById("userNameL").value;
+        pwd=document.getElementById("passwordL").value;
+        if(uName == "" ||pwd == ""|| uName.length!=10  ){
+           document.getElementById('Lerror').innerHTML=" Fill in all the details correctly!";
+           document.getElementById('Lerror').style.display='block';
+        }
+        else{
+          var xhttp = new XMLHttpRequest();
+          var params = 'phoneNo='+document.getElementById("userNameL").value+'&password='+document.getElementById("passwordL").value;
+          // console.log(params);
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              // console.log(this.responseText);
+              var myObj = JSON.parse(this.responseText);
+              // console.log(myObj.Document);
+              if(myObj.Document[0].customerID!=null){
+				//   console.log(myObj.Document);
+                localStorage.setItem('authorization', "Bearer "+ myObj.Document[1]);
+				localStorage.setItem('User', myObj.Document[0].customerID);
+                localStorage.setItem('Role', myObj.Document[0].role);				
+                localStorage.setItem('lastclear',(new Date()).getTime());
+                document.getElementById('login-form').style.display='none';
+                document.getElementById('login').style.display='none';
+                document.getElementById('signup').style.display='none';
+                document.getElementById('logout').style.display='block';
+                document.getElementById('Lerror').innerHTML="";
+                document.getElementById('Lerror').style.display='none';
+                window.location.reload();
+              }
+              else{
+                document.getElementById('Lerror').innerHTML="Username or Password is wrong!";
+                document.getElementById('Lerror').style.display='block';
+              }
+
+            }
+          };
+          xhttp.open("GET", "http://localhost:3000/customer/login?"+params, true);
+          // xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+          xhttp.send();
+        }
+    }
+
+
+function addItem()  {
+    var itemName=document.getElementById("itemName").value;
+    var description=document.getElementById("description").value;
+    var cost=document.getElementById("cost").value;
+
+    if(itemName == "" ||description == ""||cost == "" ){
+       document.getElementById('Aerror').innerHTML=" Fill in all the details correctly!";
+       document.getElementById('Aerror').style.display='block';
+    }
+    else{
+      var xhttp = new XMLHttpRequest();
+      var params = 'itemName='+document.getElementById("itemName").value+'&description='+document.getElementById("description").value+'&cost='+document.getElementById("cost").value;
+      // console.log(params);
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          // console.log(this.responseText);
+          var myObj = JSON.parse(this.responseText);
+          // console.log(myObj.Document);
+          if(myObj.Code==1){
+            //   console.log(myObj.Document);
+            document.getElementById('add-item-form').style.display='none';
+            document.getElementById('Aerror').innerHTML="";
+            document.getElementById('Aerror').style.display='none';
+          }
+          else{
+            document.getElementById('Aerror').innerHTML="Item Name already exists!";
+            document.getElementById('Aerror').style.display='block';
+          }
+
+        }
+      };
+      xhttp.open("POST", "http://localhost:3000/item/add", true);
+      xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xhttp.send(params);
+    }
+}
+
+function modifyRole()  {
+    var phoneNo=document.getElementById("phoneNo").value;
+    var e = document.getElementById("choseRole");
+    var role= e.options[e.selectedIndex].value;
+
+    // console.log(e+" "+role);
+
+    
+    if(phoneNo == "" ||e == ""|| phoneNo.length!=10){
+       document.getElementById('Rerror').innerHTML=" Fill in all the details correctly!";
+       document.getElementById('Rerror').style.display='block';
+
+    }
+    else{
+      var xhttp = new XMLHttpRequest();
+      var params = 'phoneNo='+document.getElementById("phoneNo").value+'&role='+role;
+      // console.log(params);
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          // console.log(this.responseText);
+          var myObj = JSON.parse(this.responseText);
+          // console.log(myObj.Document);
+          if(myObj.Code==1){
+            //   console.log(myObj.Document);
+            document.getElementById('modify-role-form').style.display='none';
+            document.getElementById('Rerror').innerHTML="";
+            document.getElementById('Rerror').style.display='none';
+          }
+          else{
+            document.getElementById('Rerror').innerHTML="Restricted Operation!";
+            document.getElementById('Rerror').style.display='block';
+          }
+
+        }
+      };
+      xhttp.open("POST", "http://localhost:3000/customer/role", true);
+      xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xhttp.send(params);
+    }
+}
+
+//things to be called on page load
+window.onload =function validToken(){
+  // import jwt_decode from 'jwt-decode';
+  var token = localStorage.getItem("User");
+//   var decoded = jwt_decode(token); 
+  var role =localStorage.getItem("Role");
+  // console.log(token);
+  if(token!=null)
+  {
+      // console.log(role);
+		  if(role>0)
+		  	document.getElementById('admin').style.display='block'; 
+      document.getElementById('login').style.display='none';
+      document.getElementById('signup').style.display='none';
+      document.getElementById('logout').style.display='block'; 
+      document.getElementById('myOrders').style.display='block'; 
+      document.getElementById('cart').style.display='block'; 
+      
+      
+
+      var time_now=(new Date()).getTime();
+      var time_then=localStorage.getItem('lastclear');
+      // console.log(time_then+"  "+time_now);
+      if ((time_now - time_then) > 1000 * 60 * 60 * 24) {
+          logout();
+        }
+  }
+  if(role == null){
+                               
+        document.getElementById('adminRoles').innerHTML=' <center><a  class="primary-btn text-uppercase" href="../index.html">Go Back to Home Page</a></center>';
+        document.getElementById('admin').style.display='none'; 
+  }
+  }       
+
+function logout(){
+  localStorage.clear();
+  window.location.href="#";
+  window.location.reload();
+  document.getElementById('logout').style.display='none'; 
+  document.getElementById('login').style.display='block';
+  document.getElementById('signup').style.display='block';
+  document.getElementById('myOrders').style.display='none'; 
+      document.getElementById('cart').style.display='none'; 
+      document.getElementById('admin').style.display='none'; 	  
+  
+}
+
+//just a drop down
+function modifyMenu(){
+  var id = document.getElementById("modifyMenu");
+  var selectedOption = id.options[id.selectedIndex].value;
+  // console.log(selectedOption);
+  if(selectedOption=="addItem"){
+      document.getElementById('add-item-form').style.display='block';
+  }
+  else if(selectedOption=="deleteItem"){
+      document.getElementById('delete-item-form').style.display='block';
+      getAllItems();
+  }
+  else if(selectedOption=="editItem"){
+      document.getElementById('edit-item-form').style.display='block';
+      getAllItems();
+  }
+ id.selectedIndex=0;
+}
+
+//get all items for the dropdown in delete items form
+function getAllItems(){
+                    var xhttp = new XMLHttpRequest();
+                    // console.log("im here");
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                        // console.log(this.responseText);
+                         myObj = JSON.parse(this.responseText);
+                         
+                         var html="";
+                        
+                         if(myObj.Document.length==0)
+                          html+='<option selected disabled>No items available</option>';
+                        else{
+                          html+='<option selected disabled>Select Item</option>';
+                          for(var i=0;i<myObj.Document.length;i++){
+                            html+='<option value="'+myObj.Document[i].itemName+'">'+myObj.Document[i].itemName+'</option>';
+                          }
+                          document.getElementById('ItemSelect').innerHTML=html;
+                          document.getElementById('ItemSelectU').innerHTML=html;
+
+                          // console.log(html);
+                              }
+                        }
+                          
+                    };
+                    xhttp.open("GET", "http://localhost:3000/item/get", true);
+                    // xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                    xhttp.send();
+}
+
+//deleting the selected item
+function deleteItems(){
+  var id = document.getElementById("ItemSelect");
+  var selectedOption = id.options[id.selectedIndex].value;
+    if(selectedOption==""||selectedOption=="Select Item"){
+       document.getElementById('Derror').innerHTML=" Please select an item!";
+       document.getElementById('Derror').style.display='block';
+    }
+    else{
+      var xhttp = new XMLHttpRequest();
+      var params = 'itemName='+selectedOption;
+      // console.log(params);
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          // console.log(this.responseText);
+          var myObj = JSON.parse(this.responseText);
+          // console.log(myObj.Document);
+          if(myObj.Code==1){
+            //   console.log(myObj.Document);
+            document.getElementById('delete-item-form').style.display='none';
+            document.getElementById('Derror').innerHTML="";
+            document.getElementById('Derror').style.display='none';
+            id.selectedIndex=0;
+
+          }
+          else{
+            document.getElementById('Derror').innerHTML="Please select an item!";
+            document.getElementById('Derror').style.display='block';
+            id.selectedIndex=0;
+
+          }
+
+        }
+      };
+      xhttp.open("POST", "http://localhost:3000/item/delete", true);
+      xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xhttp.send(params);
+
+    }
+}
+        
+function updateItems(){
+  var idU = document.getElementById("ItemSelectU");
+  var selectedOptionU = idU.options[idU.selectedIndex].value;
+  // console.log(selectedOptionU);
+    if(selectedOptionU==""||selectedOptionU=="Select Item"){
+       document.getElementById('Eerror').innerHTML=" Please select an item!";
+       document.getElementById('Eerror').style.display='block';
+    }
+    else{
+      var xhttp = new XMLHttpRequest();
+      var params = 'itemName='+selectedOptionU+'&cost='+document.getElementById('costU').value;
+      // console.log(params);
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          // console.log(this.responseText);
+          var myObj = JSON.parse(this.responseText);
+          // console.log(myObj.Document);
+          if(myObj.Code==1){
+            //   console.log(myObj.Document);
+            document.getElementById('edit-item-form').style.display='none';
+            document.getElementById('Eerror').innerHTML="";
+            document.getElementById('Eerror').style.display='none';
+            idU.selectedIndex=0;
+          }
+          else{
+            document.getElementById('Eerror').innerHTML="Please select an item!";
+            document.getElementById('Eerror').style.display='block';
+            idU.selectedIndex=0;
+
+          }
+
+        }
+      };
+      xhttp.open("POST", "http://localhost:3000/item/update/cost", true);
+      xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xhttp.send(params);
+
+    }
+}
+</script>
+</body>
+</html>
